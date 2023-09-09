@@ -1,0 +1,43 @@
+# Node.js related
+node_modules/
+npm-debug.log
+
+# ESLint related
+.eslintcache
+
+# macOS
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Editor-specific files
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories
+.jenkins/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Yarn
+yarn-error.log
+.pnp/
+.pnp.js
+
+# Jest
+__snapshots__/
+coverage/

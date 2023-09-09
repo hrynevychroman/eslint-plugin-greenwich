@@ -1,0 +1,33 @@
+{
+  "name": "eslint-plugin-greenwich",
+  "version": "1.0.0",
+  "description": "Define import prefix for omit Vue Lint 'One word imports'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hrynevych Roman",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.49.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RomanHrynevych/eslint-plugin-greenwich.git"
+  },
+  "eslintConfig": {
+    "plugins": ["import-prefix"],
+    "rules": {
+      "greenwich/prefix-one-word-import": [
+        "error",
+        {
+          "prefixes": ["V"]
+        }
+      ]
+    }
+  }
+}
+

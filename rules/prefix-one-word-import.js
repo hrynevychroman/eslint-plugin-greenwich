@@ -1,13 +1,14 @@
 module.exports = {
   create: function (context) {
-    const { prefixes = [] } = context.options[0] || {};
-    const { paths = [] } = context.options[0] || {};
+    const { prefixes = ["V"] } = context.options[0] || {};
+    const { paths = ["/components/"] } = context.options[0] || {};
 
     return {
       ImportDeclaration(node) {
         const value = node.source.value;
 
         const isInsidePath = paths.some(path => value.includes(path));
+        const pathName = paths.find(path => value.includes(path));
 
         if (isInsidePath) {
           node.specifiers.forEach(specifier => {
@@ -25,9 +26,9 @@ module.exports = {
               ) {
                 context.report({
                   node: specifier,
-                  message: `Single-word file names in components directory must start with one of the following prefixes: ${prefixes.join(
-                    ", "
-                  )}`
+                  message: `Single-word file names in ${pathName} directory must start with one of the following prefixes: ['${prefixes.join(
+                    "', '"
+                  )}']`
                 });
               }
             }

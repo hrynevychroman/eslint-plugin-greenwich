@@ -1,6 +1,5 @@
 # ESLint Rule: no-single-word-imports
 
-
 ## Description
 
 This ESLint rule enforces naming conventions for imports of single-word identifiers within specific directories. It is part of the [eslint-plugin-greenwich](https://www.npmjs.com/package/eslint-plugin-greenwich) plugin.
@@ -16,11 +15,13 @@ To use this rule in your ESLint configuration, you can install the [eslint-plugi
    ```bash
    pnpm install eslint-plugin-greenwich --save-dev
    ```
+
 2. **Using npm:**
 
    ```bash
    npm install eslint-plugin-greenwich --save-dev
    ```
+
 3. **Using yarn:**
 
    ```bash
@@ -35,7 +36,9 @@ This rule checks import statements within specified directories (e.g., "/compone
 
 This rule supports the following configuration options:
 
-- `allowedPrefixes` (array of strings, default: `[]`): Specifies a list of allowed prefixes for single-word import names. If provided, the rule allows import names that start with any of the specified prefixes.
+- `allowedPrefixes` (array of strings, default: `['V']`): Specifies a list of allowed prefixes for single-word import names. If provided, the rule allows import names that start with any of the specified prefixes.
+
+- `paths` (array of strings, default: `['/components/']`): Specifies an array of directory paths where the rule should be applied. Only import statements within these paths will be checked for compliance with the rule.
 
 ## ESLint Configuration
 
@@ -43,17 +46,18 @@ To configure ESLint for your project, you can create or edit an ESLint configura
 
 ```javascript
 module.exports = {
-  extends: ['eslint:recommended'], // Use recommended rules as a starting point
-  plugins: ['greenwich'], // Add the 'greenwich' plugin
+  extends: ["eslint:recommended"], // Use recommended rules as a starting point
+  plugins: ["greenwich"], // Add the 'greenwich' plugin
   rules: {
-    'greenwich/no-single-word-imports': [
-      'error',
+    "greenwich/prefix-one-word-import": [
+      "error",
       {
-        allowedPrefixes: ['V', 'My'], // Customize allowed prefixes
-      },
-    ],
+        allowedPrefixes: ["V"], // Customize allowed prefixes
+        paths: ["/components/"] // Specify the directory paths to check
+      }
+    ]
     // Add more rules and configurations as needed
-  },
+  }
 };
 ```
 
@@ -62,11 +66,15 @@ module.exports = {
 Here are some examples of how this rule works:
 
 ```javascript
-// Incorrect: Import name "Button" does not start with an allowed prefix.
-import Button from './components/Button';
+// ESLint: Single-word file names in components directory must start with one of the following prefixes: ['V']
+import Button from "@/components/base/Button.vue";
 
-// Correct: Import name "VButton" starts with an allowed prefix "V."
-import VButton from './components/Button';
+// ESLint: Single-word file names in components directory must start with one of the following prefixes: ['V']
+import MyButton from "@/components/base/Button.vue";
 
-// Correct: Import name "MyButton" starts with an allowed prefix "My."
-import MyButton from './components/Button';
+// Correct: Import name "VButton" starts with an allowed prefix ['V']
+import VButton from "@/components/base/Button.vue";
+
+// Correct: Import name "DragDrop" is multi word, don't check it
+import DragDrop from "@/components/base/DragDrop.vue";
+```

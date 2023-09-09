@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-greenwich",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Define import prefix for omit Vue Lint 'One word imports'",
   "main": "index.js",
   "scripts": {

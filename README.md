@@ -2,7 +2,7 @@
 
 ## Description
 
-This ESLint rule enforces naming conventions for imports of single-word identifiers within specific directories. It is part of the [eslint-plugin-greenwich](https://www.npmjs.com/package/eslint-plugin-greenwich) plugin.
+Hello everyone, This ESLint rule enforces naming conventions for imports of single-word identifiers within specific directories. It is part of the [eslint-plugin-greenwich](https://www.npmjs.com/package/eslint-plugin-greenwich) plugin.
 
 The rule checks that single-word import names do not violate specified naming conventions in certain directory paths. In this rule's context, a "single-word import" refers to an import statement that imports a default export with a single-word identifier.
 
